@@ -81,7 +81,7 @@ function love.update(dt)
   if love.keyboard.isDown('space', 'rctrl') and PodeAtirar and Vivo then
     nvProj = {x = Jogador.posx + Jogador.img:getWidth()/2, y = Jogador.posy, img = ImgProj}
     table.insert( Projeteis,nvProj )
-
+Tiro:play()
   end 
   
 end

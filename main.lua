@@ -54,3 +54,27 @@ function love.load()
   -- Carga do efeito sonoro do tiro
   Tiro = love.audio.newSource('assets/tiro.wav', 'static')
 end
+
+function love.update(dt)
+  --Tecla de controle para abandonar o jogo
+  if love.keyboard.isDown('escape') then
+    love.event.push('quit')
+  end
+  
+  -- Controle da movimentação lateral do personagem
+  if love.keyboard.isDown('left', 'a') then
+    if Jogador.posx > 0 then
+      Jogador.posx = Jogador.posx - (Jogador.veloc * dt)
+    end
+  elseif love.keyboard.isDown('right', 'd') then
+    if Jogador.posx < (love.graphics.getWidth() - Jogador.img:getWidth()) then
+      Jogador.posx = Jogador.posx + (Jogador.veloc * dt)
+    end
+  end
+
+  -- Controle de temporização de tiros
+  TempoTiro = TempoTiro - (1*dt)
+  if TempoTiro < 0 then 
+    PodeAtirar = true
+  end
+end

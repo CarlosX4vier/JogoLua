@@ -31,3 +31,26 @@ Pontos = 0
 
 -- Função para controlar colisão dos aviões
 -- Bouding Box - Caixa Continente
+function Colisao(x1,y1,l1,h1,x2,y2,l2,h2)
+  return x1 < x2 + l2 and x2 < x1 + l1 and y1 < y2 + h2 and y2 < y1 +h1
+end
+
+function love.load()
+  larg = 480
+  altu = 800
+  iniciox = (larg - 76) / 2
+  inicioy = ((altu - 94) / 2 ) / 2
+    
+  --Carga da imagem do jogador
+  Jogador.img = love.graphics.newImage('assets/aviao.png')
+  Jogador.posx = iniciox
+  Jogador.posy = inicioy
+    
+  --Carga das outras imagens do ambiente
+  Fundo = love.graphics.newImage('assets/fundo.png')
+  ImgProj = love.graphics.newImage('assets/projetil.png')
+  ImgInimigo = love.graphics.newImage('assets/inimigo.png')
+  
+  -- Carga do efeito sonoro do tiro
+  Tiro = love.audio.newSource('assets/tiro.wav', 'static')
+end

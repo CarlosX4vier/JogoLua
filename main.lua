@@ -60,7 +60,7 @@ function love.update(dt)
   if love.keyboard.isDown('escape') then
     love.event.push('quit')
   end
-  
+
   -- Controle da movimentação lateral do personagem
   if love.keyboard.isDown('left', 'a') then
     if Jogador.posx > 0 then
@@ -77,4 +77,11 @@ function love.update(dt)
   if TempoTiro < 0 then 
     PodeAtirar = true
   end
+
+  if love.keyboard.isDown('space', 'rctrl') and PodeAtirar and Vivo then
+    nvProj = {x = Jogador.posx + Jogador.img:getWidth()/2, y = Jogador.posy, img = ImgProj}
+    table.insert( Projeteis,nvProj )
+
+  end 
+  
 end
